@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FormInput from "./FormInput";
 const Main = () => {
+  const [showLog, setShowLog] = useState(false);
+  const stateUp = () => {
+    setShowLog(!showLog);
+  };
   return (
     <View style={main.main1}>
       <View style={main.main2}>
         <Text style={main.headerText}>Welcome to Little Lemon</Text>
       </View>
-      <View style={main.main3}>
-        <Text style={main.regularText}>Login To Continue</Text>
-      </View>
+      {!showLog && (
+        <View style={main.main3}>
+          <Text style={main.regularText}>Login To Continue</Text>
+        </View>
+      )}
       <View style={main.main4}>
-        <FormInput/>
+        <FormInput stateUp={stateUp} />
       </View>
     </View>
   );
